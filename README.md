@@ -1,2 +1,2 @@
 # modernais-garfields-md
-Modernā Garfielda grupas mājasdarbs
+Modernā Garfielda grupas mājasdarbs.
