@@ -4,4 +4,21 @@ body{
 }
 h1{
     text-align: center;
+    color:yellow;
+}
+
+.atbilzu_varianti {
+    margin-top: 30px;
+    font-size: 20pt;
+    text-align: center;
+}
+#poga{
+    
+    font-size: 20px;
+    width:200px;
+    height:50px;
+}
+#jaut{
+    text-align: center;
+    font-size: 36pt;
 }
