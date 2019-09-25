@@ -6,19 +6,47 @@ h1{
     text-align: center;
     color:yellow;
 }
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  #jautajums {
+    width: 500px;
+    border: 15px solid green;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+ }
+#atbilzu_var {
+    width: 500px;
+    border: 15px solid green;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+  }
 
-.atbilzu_varianti {
-    margin-top: 30px;
-    font-size: 20pt;
-    text-align: center;
-}
-#poga{
-    
-    font-size: 20px;
-    width:200px;
-    height:50px;
-}
-#jaut{
-    text-align: center;
-    font-size: 36pt;
-}
+#pogas {
+    width: 500px;
+    border: 15px solid green;
+    padding: 15px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+#punkti {
+    width: 500px;
+    border: 15px solid green;
+    padding: 15px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
