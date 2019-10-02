@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Spēle</title>
+  <link rel="stylesheet" href="stili.css">
+  <script type="text/javascript" charset="UTF-8" src="js/vgkvisi.js"></script>
+ 
+</head>
+<body>
+  <h1 >Valstu galvaspilsētu testa masīva pārbaude</h1>
+<script>
+
+  for (var i = 0; i < vgk.length; i++){
+    document.write(vgk[i][0] + "<br>");
+	document.write(vgk[i][1] + "<br>");
+	document.write(vgk[i][2] + "<br>");
+	let mimgx=document.createElement("img");
+	mimgx.setAttribute('src', vgk[i][3]);
+	document.body.appendChild(mimgx);
+	document.write("<hr>")
+}
+</script>
+
+
+</body>
+</html>
