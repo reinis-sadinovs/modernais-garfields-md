@@ -5,12 +5,19 @@
   <title>Spēle</title>
   <link rel="stylesheet" href="stili.css">
   <script type="text/javascript" charset="UTF-8" src="main.js"></script>
-  <script type="text/javascript" charset="UTF-8" src="vgkvisi.js"></script>
+  <script type="text/javascript" charset="UTF-8" src="JS/vgkvisi.js"></script>
+  <script type="text/javascript" charset="UTF-8">
+    window.onload = () => {
+      const g = new Galvaspilsetas("konteiners");
+    }
+  </script>
  
 </head>
 <body>
   <h1 >Valstu galvaspilsētu tests</h1>
- <div id="jautajums">Izvēlies dotās valsts galvaspilsētu</div>
+  <div id="konteiners"></div>
+  
+ <!--<div id="jautajums">Izvēlies dotās valsts galvaspilsētu</div>
 
   <div id="atbilzu_var">
     <input name="r1" type="radio" value="5"> Atbilde1<br>
@@ -27,11 +34,9 @@
   <hr style="margin-top: 50px">
   <footer>
       <div id="punkti">Jautājums x no y</div>
-  </footer>
-</div>
-</div>
+  </footer>-->
 
 
-<script src="question.js"></script>
+<!--<script src="question.js"></script>-->
 </body>
 </html>
