@@ -77,7 +77,14 @@ class Galvaspilsetas{
 
         this.divJautajums.innerHTML=vgk[nr[jaut_nr][0]][1];
 
-        pareiza_atbilde=0;
+        //Random_jautajumi strādā tā, ka pareizā atbildē vienmēr ir 0.pozīcijā
+        //Šeit ģenerē pareizās atbildes atrašanās vietu starp random galvaspilsētām
+        pareiza_atbilde=Math.floor(Math.random()*6);
+        let tmp;
+        tmp=nr[jaut_nr][0];
+        nr[jaut_nr][0]=nr[jaut_nr][pareiza_atbilde];
+        nr[jaut_nr][pareiza_atbilde]=tmp;
+
         console.log("pareiza_atbilde=",pareiza_atbilde);
 
         for(let ii=0;ii<6;ii++){
