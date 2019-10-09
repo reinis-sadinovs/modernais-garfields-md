@@ -71,6 +71,7 @@ class Galvaspilsetas{
     }
 
     jaunsJautajums() {
+        this.divAtbilzuVar.innerHTML="";
         this.konteiners.appendChild(this.divAtbilzuVar);  
 
         this.Random_jautajumi();
