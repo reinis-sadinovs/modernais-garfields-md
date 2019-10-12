@@ -1,3 +1,5 @@
+const jautajumu_skaits=5;
+const atbilzu_variantu_skaits=6;
 let gar=vgk.length; 
 let atbildes=[];
 let jaut_nr;
@@ -12,6 +14,7 @@ function jaunaSpele() {
     //this.inicializet();
     //console.log("Sākam jaunu spēli!");
     const g = new Galvaspilsetas;
+    this.konteiners.innerHTML="";//Uzklikšķinot Sākt spēli, novāc visu veco
     g.inicializet();
 }
 
@@ -31,55 +34,32 @@ class Galvaspilsetas{
 
             this.divJautajums=document.createElement("div");
             this.divJautajums.setAttribute("id","jautajums");
-           // this.divJautajums.innerHTML="JAUTĀJUMS";
             this.konteiners.appendChild(this.divJautajums);        
     
-    
             this.divAtbilzuVar=document.createElement("div");
-            this.divAtbilzuVar.setAttribute("id","atbilzu_var");
-            // this.konteiners.appendChild(this.divAtbilzuVar);    
+            this.divAtbilzuVar.setAttribute("id","atbilzu_var");  
        
             jaut_nr=0;
             pareizo_skaits=0;
-            this.jaunsJautajums();    
-            
-            // for(let ii=0;ii<6;ii++){
-            //     //let str1="";
-            //     this.radioVar= document.createElement("INPUT");
-            //     this.radioLabel = document.createElement("LABEL");
-            //     this.radioVar.setAttribute("type", "radio");
-            //     this.radioVar.setAttribute("name", "r1");
-            //     this.radioVar.setAttribute("value", ii);
-            //     this.radioVar.setAttribute("id", `radio${ii}`);
-            //     this.radioVar.onchange = () => this.izvele = ii;
-            //     this.radioLabel.setAttribute("for", `radio${ii}`);
-            //     str1=vgk[nr[jaut_nr][ii]][2];
-            //     str1=str1.concat("<br>");
-            //     his.radioLabel.innerHTML=str1;
-            //     this.radioLabel.innerHTML="<br>";
-            //     this.divAtbilzuVar.appendChild(this.radioVar);
-            //     this.divAtbilzuVar.appendChild(this.radioLabel);
-                
-            // }            
-
-            // this.atbildet = document.createElement("BUTTON");
-            // this.atbildet.innerHTML = 'Atbildet';
-            // this.atbildet.onclick = () => this.atbildets();
-            // this.divAtbilzuVar.appendChild(this.atbildet);
-
+            this.jaunsJautajums();   
         }
     }
 
     jaunsJautajums() {
-        this.divAtbilzuVar.innerHTML="";
+        this.divAtbilzuVar.innerHTML="";//Noklikšķinot Atbildēt novāc veco jautājumu
         this.konteiners.appendChild(this.divAtbilzuVar);  
 
         this.Random_jautajumi();
 
-        this.divJautajums.innerHTML=vgk[nr[jaut_nr][0]][1];
+        //tmp="Jautājums "+jaut_nr+" no "+jautajumu_skaits+"<br>";
+        //!!!!!!!!!!!!ARTŪRAM!!!!!!!!!! Šo pārveidot ar stiliem:
+        this.divJautajums.innerHTML="Jautājums "+(jaut_nr+1)+". no "+jautajumu_skaits+"<br>"+"<p><b>"+vgk[nr[jaut_nr][0]][1]+"</b></p>";
+        //!!!!!!!!!!!!!!!!!!!!!!!!!! KONSTANTĪNAM !!!!!!!!!!!!!!!
+        //Lai iegūtu karoga attēlu, jāizmanto:
+        //vgk[nr[jaut_nr][0]][3];
 
-        //Random_jautajumi strādā tā, ka pareizā atbildē vienmēr ir 0.pozīcijā
-        //Šeit ģenerē pareizās atbildes atrašanās vietu starp random galvaspilsētām
+        //Funkcija Random_jautajumi strādā tā, ka pareizā atbildē vienmēr ir 0.pozīcijā
+        //Šeit ģenerē pareizās atbildes atrašanās vietu starp random izvēlētajām galvaspilsētām:
         pareiza_atbilde=Math.floor(Math.random()*6);
         let tmp;
         tmp=nr[jaut_nr][0];
@@ -88,7 +68,7 @@ class Galvaspilsetas{
 
         console.log("pareiza_atbilde=",pareiza_atbilde);
 
-        for(let ii=0;ii<6;ii++){
+        for(let ii=0;ii<atbilzu_variantu_skaits;ii++){
             let str1="";
             this.radioVar= document.createElement("INPUT");
             this.radioLabel = document.createElement("LABEL");
@@ -120,7 +100,7 @@ class Galvaspilsetas{
             if(this.izvele===pareiza_atbilde){
                 pareizo_skaits++;}
             console.log("pareizo_skaits=",pareizo_skaits);
-            if(jaut_nr<5){
+            if(jaut_nr<jautajumu_skaits){
                 this.jaunsJautajums();
             }
             else {
@@ -131,13 +111,17 @@ class Galvaspilsetas{
         
     }
     
-    // izvele(i) {
-    //     console.log(i);
-    // }
-
-
     raadiit_punktus(){
-        console.log("Punkti ",pareizo_skaits," no 5.")
+        this.konteiners.innerHTML="";
+        this.konteiners = document.getElementById("konteiners");
+        if (this.konteiners) {
+            this.divRezultats=document.createElement("div");
+            this.divRezultats.setAttribute("id","rezultats");
+            this.konteiners.appendChild(this.divRezultats);
+            this.divRezultats.innerHTML="Punkti "+pareizo_skaits+" no "+jautajumu_skaits+".";        
+        }
+
+        console.log("Punkti ",pareizo_skaits," no ",jautajumu_skaits,".")
     }
 
 
@@ -155,12 +139,11 @@ class Galvaspilsetas{
             ir.push(false); //jautājumu numuriem
             irr.push(false); //atbilžu variantu numuriem
         }
-        for (let i = 0; i < 5; i++) {
-            //5 jautājumi
+        for (let i = 0; i < jautajumu_skaits; i++) {
             do {
                 sk = Math.floor(Math.random() * gar);
             } while (ir[sk]); //kamēr random skaitlis ir aizņemts, ģenerē nākamo
-            nr[i][0] = sk; //ieraksta masīvā izvēlēto jautājuma numuru
+            nr[i][0] = sk; //ieraksta masīvā izvēlēto jautājuma numuru un PAREIZĀS galvaspilsētas numurs ir tieši tas pats
             //console.log("nr[", i, "][0]=", nr[i][0]);
             ir[sk] = true;
             for (let j = 0; j < gar; j++) {
@@ -168,7 +151,8 @@ class Galvaspilsetas{
                 irr[j] = false;
             }
             irr[sk] = true;
-            for (let j = 1; j < 6; j++) {
+            //Ģenerē nepareizo galvaspilsētu numurus:
+            for (let j = 1; j < atbilzu_variantu_skaits; j++) {
                 do {
                     sk = Math.floor(Math.random() * gar);
                 } while (irr[sk]);

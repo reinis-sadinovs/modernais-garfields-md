@@ -24,6 +24,14 @@ h1{
     margin-right: auto;
     margin-top: 20px;
  }
+ #rezultats {
+  width: 500px;
+  border: 15px solid darkred;
+  padding: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
 #atbilzu_var {
     width: 500px;
     border: 15px solid green;
