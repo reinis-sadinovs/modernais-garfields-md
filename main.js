@@ -39,6 +39,13 @@ class Galvaspilsetas{
             this.divAtbilzuVar=document.createElement("div");
             this.divAtbilzuVar.setAttribute("id","atbilzu_var");  
        
+            this.divKarogi = document.createElement("img");
+            this.divKarogi.setAttribute("id", "karogs");
+
+            this.divProgres = document.createElement("div");
+            this.divProgres.setAttribute("id", "progres");
+            this.konteiners.appendChild(this.divProgres); 
+
             jaut_nr=0;
             pareizo_skaits=0;
             this.jaunsJautajums();   
@@ -54,10 +61,9 @@ class Galvaspilsetas{
         //tmp="Jautājums "+jaut_nr+" no "+jautajumu_skaits+"<br>";
         //!!!!!!!!!!!!ARTŪRAM!!!!!!!!!! Šo pārveidot ar stiliem:
         this.divJautajums.innerHTML="Jautājums "+(jaut_nr+1)+". no "+jautajumu_skaits+"<br>"+"<p><b>"+vgk[nr[jaut_nr][0]][1]+"</b></p>";
-        //!!!!!!!!!!!!!!!!!!!!!!!!!! KONSTANTĪNAM !!!!!!!!!!!!!!!
-        //Lai iegūtu karoga attēlu, jāizmanto:
-        //vgk[nr[jaut_nr][0]][3];
-
+        this.divKarogi.setAttribute("src", vgk[nr[jaut_nr][0]][3]);
+        this.divJautajums.appendChild(this.divKarogi);
+        this.divProgres.innerHTML="Tavs tekošais rezultāts ir: "+pareizo_skaits+". no "+jautajumu_skaits+" iespējamiem.<br></b></p>";      
         //Funkcija Random_jautajumi strādā tā, ka pareizā atbildē vienmēr ir 0.pozīcijā
         //Šeit ģenerē pareizās atbildes atrašanās vietu starp random izvēlētajām galvaspilsētām:
         pareiza_atbilde=Math.floor(Math.random()*6);

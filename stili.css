@@ -24,6 +24,14 @@ h1{
     margin-right: auto;
     margin-top: 20px;
  }
+ #progres {
+  width: 500px;
+  border: 15px solid green;
+  padding: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
  #rezultats {
   width: 500px;
   border: 15px solid darkred;
@@ -58,3 +66,7 @@ h1{
     margin-left: auto;
     margin-right: auto;
   }
+
+#karogs {
+  width: 150px
+}
