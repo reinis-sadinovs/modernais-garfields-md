@@ -14,7 +14,7 @@ function jaunaSpele() {
     //this.inicializet();
     //console.log("Sākam jaunu spēli!");
     const g = new Galvaspilsetas;
-    this.konteiners.innerHTML="";//Uzklikšķinot Sākt spēli, novāc visu veco
+    this.textblock.innerHTML="";//Uzklikšķinot Sākt spēli, novāc visu veco
     g.inicializet();
 }
 
@@ -26,44 +26,48 @@ class Galvaspilsetas{
     }
 
     inicializet() {
-        this.konteiners = document.getElementById("konteiners");
-        if (this.konteiners) {
+        this.textblock = document.getElementById("textblock");
+        if (this.textblock) {
+			
+			this.divProgres = document.createElement("div");
+            this.divProgres.setAttribute("id", "progres");
+            this.textblock.appendChild(this.divProgres); 
+			
             this.divPareizi = document.createElement("div");
             this.divPareizi.setAttribute("class", "pareizi");
-            this.konteiners.appendChild(this.divPareizi);
+            this.textblock.appendChild(this.divPareizi);
 
             this.divJautajums=document.createElement("div");
             this.divJautajums.setAttribute("id","jautajums");
-            this.konteiners.appendChild(this.divJautajums);        
+            this.textblock.appendChild(this.divJautajums);        
     
             this.divAtbilzuVar=document.createElement("div");
             this.divAtbilzuVar.setAttribute("id","atbilzu_var");  
        
             this.divKarogi = document.createElement("img");
-            this.divKarogi.setAttribute("id", "karogs");
+            this.divKarogi.setAttribute("id", "karogi");
 
-            this.divProgres = document.createElement("div");
-            this.divProgres.setAttribute("id", "progres");
-            this.konteiners.appendChild(this.divProgres); 
+
 
             jaut_nr=0;
             pareizo_skaits=0;
             this.jaunsJautajums();   
+
         }
     }
 
     jaunsJautajums() {
         this.divAtbilzuVar.innerHTML="";//Noklikšķinot Atbildēt novāc veco jautājumu
-        this.konteiners.appendChild(this.divAtbilzuVar);  
+        this.textblock.appendChild(this.divAtbilzuVar);  
 
         this.Random_jautajumi();
 
         //tmp="Jautājums "+jaut_nr+" no "+jautajumu_skaits+"<br>";
         //!!!!!!!!!!!!ARTŪRAM!!!!!!!!!! Šo pārveidot ar stiliem:
-        this.divJautajums.innerHTML="Jautājums "+(jaut_nr+1)+". no "+jautajumu_skaits+"<br>"+"<p><b>"+vgk[nr[jaut_nr][0]][1]+"</b></p>";
+		this.divProgres.innerHTML="Tavs tekošais rezultāts ir "+pareizo_skaits+". no "+jautajumu_skaits+" iespējamiem. <br><br>Jautājums "+(jaut_nr+1)+". no "+jautajumu_skaits+"<br><br>"; 
+        this.divJautajums.innerHTML="<b>"+vgk[nr[jaut_nr][0]][1]+"</b><br>";
         this.divKarogi.setAttribute("src", vgk[nr[jaut_nr][0]][3]);
-        this.divJautajums.appendChild(this.divKarogi);
-        this.divProgres.innerHTML="Tavs tekošais rezultāts ir "+pareizo_skaits+". no "+jautajumu_skaits+" iespējamiem.<br></b></p>";      
+        this.divJautajums.appendChild(this.divKarogi);     
         //Funkcija Random_jautajumi strādā tā, ka pareizā atbildē vienmēr ir 0.pozīcijā
         //Šeit ģenerē pareizās atbildes atrašanās vietu starp random izvēlētajām galvaspilsētām:
         pareiza_atbilde=Math.floor(Math.random()*6);
@@ -91,10 +95,10 @@ class Galvaspilsetas{
             this.divAtbilzuVar.appendChild(this.radioLabel);            
         }
         this.atbildet = document.createElement("BUTTON");
-        this.atbildet.innerHTML = 'Atbildet';
+		this.atbildet.setAttribute("class", "poga");
+        this.atbildet.innerHTML = 'Atbildēt';
         this.atbildet.onclick = () => this.atbildets();
         this.divAtbilzuVar.appendChild(this.atbildet);
-
     }  
 
     atbildets() {
@@ -118,13 +122,13 @@ class Galvaspilsetas{
     }
     
     raadiit_punktus(){
-        this.konteiners.innerHTML="";
-        this.konteiners = document.getElementById("konteiners");
-        if (this.konteiners) {
+        this.textblock.innerHTML="";
+        this.textblock = document.getElementById("textblock");
+        if (this.textblock) {
             this.divRezultats=document.createElement("div");
             this.divRezultats.setAttribute("id","rezultats");
-            this.konteiners.appendChild(this.divRezultats);
-            this.divRezultats.innerHTML="Punkti "+pareizo_skaits+" no "+jautajumu_skaits+".";        
+            this.textblock.appendChild(this.divRezultats);
+            this.divRezultats.innerHTML="Punkti "+pareizo_skaits+" no "+jautajumu_skaits+". <br> <img src='images/congratulation.jpg'>";        
         }
 
         console.log("Punkti ",pareizo_skaits," no ",jautajumu_skaits,".")
