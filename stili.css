@@ -1,72 +1,212 @@
-/* CSS fails */
+*
+{margin:0;
+padding:0;
+}
 body{
-    background: #63FF4A
+    background:#043645 url(images/bodybg.png) top repeat-x;
+    font-family:Verdana, Arial, sans-serif;
 }
-h1{
+#header img{
+    width:970px;
+    height:230px;
+    margin:0 auto;
+}
+#header{
+    width:1000px;
+    height:250px;
+    background:#068fb6;
+    margin:0 auto;
+}
+#main{
+    width:1000px;
+    min-height:400px;
+    background:#36b2d5;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+}
+#left-sidebar{
+    width:200px;
+    min-height:400px;
+    background:#36b2d5;
+    float:left;
+}
+#konteiners{
+    width:600px;
+    min-height:400px;
+    background:#549bb0;
+    float:left;
+    margin:0 auto;
+    position:relative;
+    padding-bottom:20px;
+}
+#right-sidebar{
+    width:200px;
+    min-height:400px;
+    background:#36b2d5;
+    float:left;
+}
+#footer{
+    width:1000px;
+    height:50px;
+    background:#068fb6;
+    margin:0 auto;
+}
+#footer p{
+	text-align: center;
+	color: #400000;
+	padding-top: 10px;
+}
+#left-sidebar li{
+    width:160px;
+    height:40px;
+    background:#068fb6;
+    margin-bottom:2px;
+}
+#left-sidebar ul{
+    margin:none;
+    padding:none;
+    list-style:none;
+    margin-left:20px;
+    margin-top:20px;
+}
+#left-sidebar li:hover{
+    background:lightblue;
+    cursor:pointer;
+}
+#left-sidebar a{
+    color:#092f3a;
+    font-family: Ariel, sans-serif;
+    text-decoration:none;
+    font-size:20px;
+    line-height:10px;
+    margin-left:10px;
+}
+#header img{
+    margin:10px 100px 10px 20px;
+    float:left;
+}
+#left-sidebar a:before{
+    content:url(images/before.png);
+    margin-right:10px;
+    margin-top:3px;
+}
+#left-sidebar a:after{
+    content:url(images/after.png);
+    margin-left:10px;
+}
+
+.poga {
+	margin: 0px;
+	height: 40px;
+	width: 169px;
+	color: #FFFFFF;
+	border: 0;
+	border-radius: 10px;
+	text-decoration: none;
     text-align: center;
-    color:yellow;
+	background-image: url("images/poga_h.png");
+	font-size: 14px;
+	font-weight: bolder;
 }
-.button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
+
+.poga:hover
+{
+	height: 40px;
+	width: 169px;
+	color: #400000;
+	border: 0;
+	border-radius: 10px;
+	text-decoration: none;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-  }
-  #jautajums {
-    width: 500px;
-    border: 15px solid green;
-    padding: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
- }
- #progres {
-  width: 500px;
-  border: 15px solid green;
-  padding: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
+	background-image: url("images/poga.png");
+	font-size: 14px;
+	font-weight: bolder;
 }
- #rezultats {
-  width: 500px;
-  border: 15px solid darkred;
-  padding: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
+
+.poga:before{
+    content:url(images/before.png);
+    margin-right:10px;
+    margin-top:3px;
 }
+
+.poga:after{
+    content:url(images/after.png);
+    margin-left:10px;
+}
+
+#header img{
+    margin:10px 100px 10px 20px;
+    float:left;
+}
+	
+#rezultats {
+	padding-top: 30%;
+	text-align: center;
+	color: #400000;
+	font-weight: bolder;
+	font-size: 30px;
+}
+
+#rezultats img{
+	padding-left: 40%;
+}
+
+#textblock{
+    width:560px;
+    min-height:380px;
+    background:#497f8f;
+    margin:0 auto;
+    margin-top:20px;
+    padding:0 10px 10px 10px;
+    position:relative;
+    color:#000;
+}
+
+.browser img{
+    margin-top:9px;
+    margin-left:7px;
+    float:left;
+}
+
+.browser{
+    width:180px;
+    height:70px;
+    background:#068fb6;
+    margin:0 auto;
+    margin-top:20px;
+}
+
+#textblock img{
+    margin:10px 10px 0 0px;
+    float:left;
+	height: 110px;
+}
+
+#textblock p{
+    font-size:16px;
+    line-height:22px;
+    margin-left:10px;
+    margin-top:10px;
+    margin-bottom: 10px;
+    color:#000;
+}
+
 #atbilzu_var {
-    width: 500px;
-    border: 15px solid green;
-    padding: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-  }
+margin-top: 10px;
+}
 
-#pogas {
-    width: 500px;
-    border: 15px solid green;
-    padding: 15px;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+#atbilzu_var label {
+font-style: italic;	
+}
 
-#punkti {
-    width: 500px;
-    border: 15px solid green;
-    padding: 15px;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+#Progres {
+margin-right: 0px;
+}
 
-#karogs {
-  width: 150px
+#jautajums {
+	color: #400000;
+	font-weight: bolder;
+	font-size: 18px;
+	font-style: italic;
 }
