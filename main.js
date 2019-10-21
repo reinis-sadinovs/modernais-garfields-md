@@ -60,13 +60,13 @@ class Galvaspilsetas {
     //tmp="Jautājums "+jaut_nr+" no "+jautajumu_skaits+"<br>";
     //!!!!!!!!!!!!ARTŪRAM!!!!!!!!!! Šo pārveidot ar stiliem:
     this.divProgres.innerHTML =
-      "Tavs tekošais rezultāts ir " +
+      "Tavs pašreizējais rezultāts ir " +
       pareizo_skaits +
-      ". no " +
+      " no " +
       jautajumu_skaits +
-      " iespējamiem. <br><br>Jautājums " +
+      " iespējamajiem. <br><br>" +
       (jaut_nr + 1) +
-      ". no " +
+      ". jautājums no " +
       jautajumu_skaits +
       "<br><br>";
     this.divJautajums.innerHTML = "<b>" + vgk[nr[jaut_nr][0]][1] + "</b><br>";
