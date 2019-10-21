@@ -126,7 +126,7 @@ let vgk = [
 [ 'MN', 'Mongolija', 'Ulanbatora', 'https://flagpedia.net/data/flags/w580/mn.png'], 
 [ 'MZ', 'Mozambikas Republika', 'Maputu', 'https://flagpedia.net/data/flags/w580/mz.png'], 
 [ 'NA', 'Namībijas Republika', 'Vindhuka', 'https://flagpedia.net/data/flags/w580/na.png'], 
-[ 'NR', 'Nauru Republika', 'oficiālas galvaspilsētas nav;', 'https://flagpedia.net/data/flags/w580/nr.png'], 
+[ 'NR', 'Nauru Republika', 'oficiālas galvaspilsētas nav', 'https://flagpedia.net/data/flags/w580/nr.png'], 
 [ 'NP', 'Nepālas Demokrātiskā Federatīvā Republika', 'Katmandu', 'https://flagpedia.net/data/flags/w580/np.png'], 
 [ 'NL', 'Nīderlande', 'Amsterdama / Hāga', 'https://flagpedia.net/data/flags/w580/nl.png'], 
 [ 'NE', 'Nigēras Republika', 'Niameja', 'https://flagpedia.net/data/flags/w580/ne.png'], 
