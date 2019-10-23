@@ -11,8 +11,6 @@ for (let i = 0; i < 7; i++) {
 }
 
 function jaunaSpele() {
-  //this.inicializet();
-  //console.log("Sākam jaunu spēli!");
   const g = new Galvaspilsetas();
   this.textblock.innerHTML = ""; //Uzklikšķinot Sākt spēli, novāc visu veco
   g.inicializet();
@@ -21,7 +19,6 @@ function jaunaSpele() {
 class Galvaspilsetas {
   constructor() {
     this.izvele = null;
-    //this.statuss=Galvaspilsetas.STATUSS_NEINICIALIZETS;
   }
 
   inicializet() {
@@ -57,30 +54,26 @@ class Galvaspilsetas {
 
     this.Random_jautajumi();
 
-    //tmp="Jautājums "+jaut_nr+" no "+jautajumu_skaits+"<br>";
-    //!!!!!!!!!!!!ARTŪRAM!!!!!!!!!! Šo pārveidot ar stiliem:
     this.divProgres.innerHTML =
       "Tavs pašreizējais rezultāts ir " +
       pareizo_skaits +
       " no " +
       jautajumu_skaits +
-      " iespējamajiem. <br><br>" +
-      (jaut_nr + 1) +
-      ". jautājums no " +
-      jautajumu_skaits +
-      "<br><br>";
-    this.divJautajums.innerHTML = "<b>" + vgk[nr[jaut_nr][0]][1] + "</b><br>";
+      " iespējamajiem. <br><br>";
+      // (jaut_nr + 1) +
+      // ". jautājums no " +
+      // jautajumu_skaits +
+      // "<br><br>";
+    this.divJautajums.innerHTML = "<b>" + (jaut_nr + 1) + ". " + vgk[nr[jaut_nr][0]][1] + "</b><br>";
     this.divKarogi.setAttribute("src", vgk[nr[jaut_nr][0]][3]);
     this.divJautajums.appendChild(this.divKarogi);
     //Funkcija Random_jautajumi strādā tā, ka pareizā atbildē vienmēr ir 0.pozīcijā
     //Šeit ģenerē pareizās atbildes atrašanās vietu starp random izvēlētajām galvaspilsētām:
-    pareiza_atbilde = Math.floor(Math.random() * 6);
+    pareiza_atbilde = Math.floor(Math.random() * atbilzu_variantu_skaits);
     let tmp;
     tmp = nr[jaut_nr][0];
     nr[jaut_nr][0] = nr[jaut_nr][pareiza_atbilde];
     nr[jaut_nr][pareiza_atbilde] = tmp;
-
-    console.log("pareiza_atbilde=", pareiza_atbilde);
 
     for (let ii = 0; ii < atbilzu_variantu_skaits; ii++) {
       let str1 = "";
@@ -106,16 +99,13 @@ class Galvaspilsetas {
   }
 
   atbildets() {
-    console.log("this.izvele=", this.izvele);
     if (this.izvele === null) {
       alert("Izvēlieties galvaspilsētu!");
     } else {
       jaut_nr++;
-      console.log("jaut_nr=", jaut_nr);
       if (this.izvele === pareiza_atbilde) {
         pareizo_skaits++;
       }
-      console.log("pareizo_skaits=", pareizo_skaits);
       if (jaut_nr < jautajumu_skaits) {
         this.jaunsJautajums();
       } else {
@@ -139,18 +129,9 @@ class Galvaspilsetas {
         jautajumu_skaits +
         ". <br> <img src='images/congratulation.jpg'>";
     }
-
-    console.log("Punkti ", pareizo_skaits, " no ", jautajumu_skaits, ".");
   }
 
   Random_jautajumi() {
-    //Ģenerē Random 5 atšķirīgus skaitļus - jautājumu numurus
-    //let gar=vgk.length;
-    // let gar = 10; //šo aizvākt pēc testēšanas un atdzīvināt vienu virs šīs rindas
-    // let nr = []; //nodefinē viendimensiju masīvu
-    // for (let i = 0; i < 7; i++) {
-    //     nr[i] = []; //nodefinē masīvam otru dimensiju; nr[i][0] - glabā jautājuma numuru un tur pat arī pareizo atbildi
-    // }
     let sk;
     let ir = [],
       irr = [];

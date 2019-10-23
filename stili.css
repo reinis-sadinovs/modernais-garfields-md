@@ -8,12 +8,12 @@ body{
 }
 #header img{
     width:970px;
-    height:230px;
+    height:140px;
     margin:0 auto;
 }
 #header{
     width:1000px;
-    height:250px;
+    height:160px;
     background:#068fb6;
     margin:0 auto;
 }
@@ -160,7 +160,7 @@ body{
     margin-top:20px;
     padding:0 10px 10px 10px;
     position:relative;
-    color:#000;
+    color:#FFF;
 }
 
 .browser img{
