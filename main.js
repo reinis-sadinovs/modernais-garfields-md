@@ -16,6 +16,37 @@ function jaunaSpele() {
   g.inicializet();
 }
 
+function ieiet(){
+  //Pārbauda, vai tāds lietotājs eksistē
+  let LietotajaVards = document.getElementById("uname").value;
+  this.leftBox = document.getElementById("left-sidebar");
+  this.leftBox.innerHTML = "";
+  this.divUzruna = document.createElement("div");
+  this.divUzruna.setAttribute("id","uzruna");
+  this.leftBox.appendChild(this.divUzruna);
+  this.h2 = document.createElement("h2");
+  this.h2.setAttribute("id","h2");
+  this.leftBox.appendChild(this.h2);
+  this.h2.innerHTML = LietotajaVards;
+
+
+  jaunaSpele();
+
+}
+
+function registracija(){
+  let parole1 = document.getElementById("psw_reg").value;
+  let parole2 = document.getElementById("psw-repeat_reg").value;
+
+  if(parole1!==parole2){
+    alert("Paroles nesakrīt :(");
+  }     
+  else{
+    //Pārbauda, vai tāds Lietotāja vārds ir brīvs...
+  }
+}
+
+
 class Galvaspilsetas {
   constructor() {
     this.izvele = null;
