@@ -1,0 +1,35 @@
+Struktūra:
+1. datne  “lietotājs” – formāts .csv (ar “;”)
+	lietotājvārds;parole
+		lietotājvārds:
+			Length = 3-12 
+			Type  = char
+			bez tukšumzīmēm un semikoliem
+
+		parole:
+			Length = 6-12 
+			Type  = char
+			bez tukšumzīmēm un semikoliem
+
+2. datne  “statistika” – formāts .csv (ar “;”)
+	lietotājvārds;rezultāts;datums;laiks;spēles ilgums (sekundes)
+		lietotājvārds:
+			Length = 3-12 
+			Type  = char
+			bez tukšumzīmēm un semikoliem
+
+		rezultāts:*
+			type = number (no 0 līdz 10000)
+	   *pēc formulas 
+        rezultāts (noapaļots līdz veselam skaitlim) = 
+        10000/(spēles ilgums sekundēs)*(atminēto valstu skaits) 
+		
+        datums:
+			formāts = dd.mm.gggg.
+		
+        laiks:
+			formāts = HH.mm:ss (24 stundu formātā)
+		
+        spēles ilgums:
+			formāts = number (no 1 līdz 600)
+
