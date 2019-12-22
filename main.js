@@ -16,8 +16,26 @@ function jaunaSpele() {
   g.inicializet();
 }
 
+function neregistrejoties(){
+  //Pārbauda, vai tāds lietotājs eksistē un tad
+  let LietotajaVards = "Viesis";
+  this.leftBox = document.getElementById("left-sidebar");
+  this.leftBox.innerHTML = "";
+  this.divUzruna = document.createElement("div");
+  this.divUzruna.setAttribute("id","uzruna");
+  this.leftBox.appendChild(this.divUzruna);
+  this.h2 = document.createElement("h2");
+  this.h2.setAttribute("id","h2");
+  this.leftBox.appendChild(this.h2);
+  this.h2.innerHTML = LietotajaVards;
+
+
+  jaunaSpele();
+
+}
+
 function ieiet(){
-  //Pārbauda, vai tāds lietotājs eksistē
+  //Pārbauda, vai tāds lietotājs eksistē un tad
   let LietotajaVards = document.getElementById("uname").value;
   this.leftBox = document.getElementById("left-sidebar");
   this.leftBox.innerHTML = "";

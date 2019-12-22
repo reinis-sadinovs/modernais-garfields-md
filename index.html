@@ -21,7 +21,9 @@
             <button class="poga" onclick="ieiet()">Ieiet</button>
           </div>      
         </form>
-        <button class="poga" onclick="document.getElementById('idRegistracija').style.display='block'">Reģistrēties</button>  
+        <hr>
+        <button class="poga" onclick="document.getElementById('idRegistracija').style.display='block'">Reģistrēties</button>
+        <button class="poga" onclick="neregistrejoties()" title="Sākt spēli bez reģistrācijas">Sākt tagad</button>  
 
         <div id="idRegistracija" class="modal">
           <span onclick="document.getElementById('idRegistracija').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -32,7 +34,7 @@
               <input type="password" placeholder="Parole atkārtoti" id="psw-repeat_reg" required>  
               <button type="submit" class="poga" onclick="registracija()">Reģistrēties</button>
               <button type="button" class="poga" onclick="document.getElementById('idRegistracija').style.display='none'" class="cancelbtn">Atcelt</button>              
-              <p align="center">* Ja nevēlaties reģistrēties, izmantojiet&emsp;<i>Lietotāja vārds:</i><b><i>Viesis</i></b>&emsp;<i>Parole:</i><b><i>Viesis</i></b></p><br>
+              <!--<p align="center">* Ja nevēlaties reģistrēties, izmantojiet&emsp;<i>Lietotāja vārds:</i><b><i>Viesis</i></b>&emsp;<i>Parole:</i><b><i>Viesis</i></b></p><br>-->
             </div>        
           </form>
         </div>
