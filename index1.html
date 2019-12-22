@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Spēle</title>
+    <link rel="stylesheet" href="stili.css" />
+    <script type="text/javascript" charset="UTF-8" src="JS/vgkvisi.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="main.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <a href="index.html"><img src="images/header_img.png"/></a>
+    </div>
+
+    <div id="main">
+      <div id="left-sidebar">
+        <!--<form action="/login.py" method="post"><!--Par šo šaubos!!!-->
+          <!--<div class="login">
+            <input type="text" placeholder="Lietotāja vārds" id="uname" required>        
+            <input type="password" placeholder="Parole" id="psw" required>            
+            <button class="poga" onclick="ieiet()">Iejet bez reģ.</button>
+          </div>      
+        </form>!-->
+
+        <button class="poga" onclick="document.getElementById('idLogin').style.display='block'">Ielogoties</button>
+        <button class="poga" onclick="document.getElementById('idRegistracija').style.display='block'">Reģistrēties</button>  
+        <button class="poga" onclick="jaunaSpele()">Sākt spēli bez reģistrācijas!</button>
+      </div>
+
+      <div id="konteiners">
+        <div id="textblock">
+          <h1>Par spēli</h1>
+          <img src="images/knb.jpg" alt="Kuroko and Nigou" />
+          <p>
+            Pilsētu kultūra, valodas un tradīcijas ir ļoti dažādas un
+            atšķirīgas, bet vai tu vari atpazīt šo valstu galvaspilsētas,
+            paskatoties uz karogu? Izpildi testu un pārbaudi savas ģeogrāfijas
+            zināšanas!
+          </p>
+        </div>
+      </div>
+
+      <div id="right-sidebar">
+        <div class="browser">
+          <a href="https://www.youtube.com/user/jaunogeografuskola" target="_blank">
+            <img src="images/youtubelogo.jpg" alt="YouTube" />
+          </a>
+
+          <a href="https://www.facebook.com/pg/Jauno.geografu.skola/about/" target="_blank">
+            <img src="images/facebook.png" alt="Deviantart" />
+          </a>
+
+          <a href="https://twitter.com/jgs_lv" target="_blank">
+            <img src="images/twitterlogo.jpg" alt="Twitter" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <p>&copy Modernais Garfields</p>
+    </div>
+
+    <div id="idRegistracija" class="modal">
+      <span onclick="document.getElementById('idRegistracija').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <form class="modal-content animate"><!--action="/action_page.php" method="post">-->
+        <div class="container">
+          <input type="text" placeholder="Lietotāja vārds" id="uname_reg" required>
+          <input type="password" placeholder="Parole" id="psw_reg" required>
+          <input type="password" placeholder="Parole atkārtoti" id="psw-repeat_reg" required>  
+          <button type="submit" class="poga" onclick="registracija()">Reģistrēties</button>
+          <button type="button" class="poga" onclick="document.getElementById('idRegistracija').style.display='none'" class="cancelbtn">Atcelt</button>              
+          <p align="center">* Ja nevēlaties reģistrēties, izmantojiet&emsp;<i>Lietotāja vārds:</i><b><i>Viesis</i></b>&emsp;<i>Parole:</i><b><i>Viesis</i></b></p><br>
+        </div>        
+      </form>
+    </div>
+
+
+    <div id="idLogin" class="modal">
+      <span onclick="document.getElementById('idLogin').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <form class="modal-content animate" action='http://127.0.0.1:5000/' method="post">
+        <div class="container">
+          <input type="text" placeholder="Lietotāja vārds" name="uname_lgn" id="uname_lgn" required>
+          <input type="password" placeholder="Parole" name="psw_lgn" id="psw_lgn" required>
+          <button type="submit" class="poga" onclick="login()">Ielogoties</button>
+          <button type="button" class="poga" onclick="document.getElementById('idLogin').style.display='none'" class="cancelbtn">Atcelt</button>              
+      </form>
+    </div>
+
+  </body>
+</html>
