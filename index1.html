@@ -77,10 +77,10 @@
 
     <div id="idLogin" class="modal">
       <span onclick="document.getElementById('idLogin').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <form class="modal-content animate" action='http://127.0.0.1:5000/' method="post">
+      <form class="modal-content animate">
         <div class="container">
-          <input type="text" placeholder="Lietotāja vārds" name="uname_lgn" id="uname_lgn" required>
-          <input type="password" placeholder="Parole" name="psw_lgn" id="psw_lgn" required>
+          <input type="text" placeholder="Lietotāja vārds" id="iduname" required>
+          <input type="password" placeholder="Parole" id="idpwd" required>
           <button type="submit" class="poga" onclick="login()">Ielogoties</button>
           <button type="button" class="poga" onclick="document.getElementById('idLogin').style.display='none'" class="cancelbtn">Atcelt</button>              
       </form>
