@@ -52,6 +52,26 @@ function ieiet(){
 
 }
 
+function login(){
+  let lgndata = new Object();
+   lgndata.uname = document.getElementById('iduname').value;
+   lgndata.pwd =  document.getElementById('idpwd').value ;
+   alert(lgndata.uname+ " "+ lgndata.pwd);
+
+   var xhttp = new XMLHttpRequest();
+   xhttp.onreadystatechange = function() {
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+          document.getElementById('demo').innerHTML = xhttp.responseText;
+       }
+      };
+
+      xhttp.open("POST", "http://127.0.0.1:5000/", true);
+      xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+      xhttp.setRequestHeader("Content-type", "application/json, charset=utf-8");
+      xhttp.send(JSON.stringify(lgndata));
+}
+
+
 function registracija(){
   let parole1 = document.getElementById("psw_reg").value;
   let parole2 = document.getElementById("psw-repeat_reg").value;
