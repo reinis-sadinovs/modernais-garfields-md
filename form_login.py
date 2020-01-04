@@ -34,3 +34,67 @@ def login():
         print ("Neizdevas__")
         myresp = 'NEE'
    return (myresp)
+   
+@app.route('/lgnchk', methods=['GET', 'POST'])
+def lgnchk():
+   print('izsaukums atnaca dati')
+   lgnchk = True
+   j=json.loads(request.data)
+   print(j['runame'])
+   with open('unames.csv', 'r', encoding='UTF-8') as csvfile:
+      csv_reader = csv.reader(csvfile, delimiter = ';')
+      chkusername = j['runame']
+      print(chkusername)
+      
+      for row in csv_reader:
+         print(row)
+         print(row[0])
+         print(chkusername)
+         if row[0]==chkusername:
+            lgnchk = False
+            print ("Logini sakrīt")
+            break
+
+   if lgnchk == False:
+        print ("SAKRIIT")
+        myresp = 'SAKRIIT'
+   else:
+        print ("NESAKRIIT")
+        myresp = 'NESAKRIIT'
+   return (myresp)
+   
+@app.route('/rgstr', methods=['GET', 'POST'])
+def rgstr():
+   print('izsaukums atnaca dati')
+   rgstr = False
+   j=json.loads(request.data)
+   print(j['reguname'])
+   print(j['regpwd'])   
+   addname = j['reguname']
+   addpwd = j['regpwd']
+
+   with open('unames.csv', 'a', newline="", encoding='UTF-8') as csvfile:
+     csv_writer = csv.writer(csvfile, delimiter=';')
+     adduser = [addname, addpwd]
+#     writer = csv.writer(csvfile)
+     csv_writer.writerow(adduser)
+     csvfile.close()
+     
+     with open('unames.csv', 'r', encoding='UTF-8') as csvfile:
+       csv_reader = csv.reader(csvfile, delimiter = ';')
+       for row in csv_reader:
+          print(row)
+#         print(row[0], row[1])
+#         print(username, password)
+          if row[0]==addname and row[1]==addpwd:
+            rgstr = True
+            print ("Izdevas")
+            break
+
+   if rgstr == True:
+        print ("Izdevas__")
+        myresp = 'IZDEVAS'
+   else:
+        print ("Neizdevas__")
+        myresp = 'NEIZDEVAS'
+   return (myresp)

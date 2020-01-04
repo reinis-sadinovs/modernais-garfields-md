@@ -52,6 +52,24 @@ function ieiet(){
 
 }
 
+function ieiet2(){
+  //Pārbauda, vai tāds lietotājs eksistē un tad
+  let LietotajaVards = document.getElementById("runame").value;
+  this.leftBox = document.getElementById("left-sidebar");
+  this.leftBox.innerHTML = "";
+  this.divUzruna = document.createElement("div");
+  this.divUzruna.setAttribute("id","uzruna");
+  this.leftBox.appendChild(this.divUzruna);
+  this.h2 = document.createElement("h2");
+  this.h2.setAttribute("id","h2");
+  this.leftBox.appendChild(this.h2);
+  this.h2.innerHTML = LietotajaVards;
+
+
+  jaunaSpele();
+
+}
+
 function login(){
   let lgndata = new Object();
   lgndata.uname = document.getElementById('uname').value;
@@ -75,18 +93,63 @@ xhr.setRequestHeader("Content-type", "application/json, charset=utf-8");
 xhr.send(JSON.stringify(lgndata));
 }
 
-function registracija(){
-  let parole1 = document.getElementById("psw_reg").value;
-  let parole2 = document.getElementById("psw-repeat_reg").value;
+
+
+function lgnpsscheck(){
+  let parole1 = document.getElementById("rpsw").value;
+  let parole2 = document.getElementById("rpsw2").value;
 
   if(parole1!==parole2){
     alert("Paroles nesakrīt :(");
   }     
   else{
     //Pārbauda, vai tāds Lietotāja vārds ir brīvs...
-  }
-}
+      let regchkdata = new Object();
+      regchkdata.runame = document.getElementById('runame').value;
 
+      const xhr = new XMLHttpRequest(),
+      method = "POST",
+      url = "http://127.0.0.1:5000/lgnchk";
+  
+        xhr.open(method, url, true);
+        xhr.onreadystatechange = function () {
+        if(xhr.readyState == 4 && xhr.status == 200) {
+          if (xhr.responseText == 'NESAKRIIT'){
+           return registracija();
+           }
+           return alert("Jūsu lietotājvārds jau lieto cits spēlētājs!!!")
+        }
+      }
+  xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+  xhr.setRequestHeader("Content-type", "application/json, charset=utf-8");
+  xhr.send(JSON.stringify(regchkdata));
+    }
+  }
+
+
+function registracija(){
+  let regdata = new Object();
+  regdata.reguname = document.getElementById('runame').value;
+  regdata.regpwd =  document.getElementById('rpsw').value;
+    
+  const xhrr = new XMLHttpRequest(),
+    method = "POST",
+    url = "http://127.0.0.1:5000/rgstr";
+
+      xhrr.open(method, url, true);
+      xhrr.onreadystatechange = function () {
+      if(xhrr.readyState == 4 && xhrr.status == 200) {
+        if (xhrr.responseText == 'IZDEVAS'){
+          alert("Reģistrācija izdevas! \n Varāt spēlēt kā "+ regdata.reguname);
+          return ieiet2();
+         }
+         return alert("Viss ir slikti!!! \n Jānospiež F5")
+       }
+    }
+xhrr.setRequestHeader("Access-Control-Allow-Origin", "*");
+xhrr.setRequestHeader("Content-type", "application/json, charset=utf-8");
+xhrr.send(JSON.stringify(regdata));
+}
 
 class Galvaspilsetas {
   constructor() {
