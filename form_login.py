@@ -1,12 +1,11 @@
-from flask import Flask, render_template, redirect, url_for, request, json, jsonify
+from flask import Flask, render_template, redirect, url_for, request, json, jsonify, make_response
 from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
+
 import csv
 
-# mana datora strada tikai Opera ar ieslegtu VPN
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/yn', methods=['GET', 'POST'])
 def login():
    print('izsaukums atnaca dati')
    login = False
@@ -23,18 +22,15 @@ def login():
          print(row)
          print(row[0], row[1])
          print(username, password)
-         if str(row[0])==username and str(row[1])==password:
+         if row[0]==username and row[1]==password:
             login = True
             print ("Izdevas")
-            return render_template('index.html')
- #           break
+            break
 
-            
    if login == True:
         print ("Izdevas__")
-        return render_template('index.html')
-#            
+        myresp = 'JAA'
    else:
         print ("Neizdevas__")
-        return render_template('index1.html')            
- #       exit()  
+        myresp = 'NEE'
+   return (myresp)

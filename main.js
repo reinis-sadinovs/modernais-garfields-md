@@ -54,23 +54,26 @@ function ieiet(){
 
 function login(){
   let lgndata = new Object();
-   lgndata.uname = document.getElementById('iduname').value;
-   lgndata.pwd =  document.getElementById('idpwd').value ;
-   alert(lgndata.uname+ " "+ lgndata.pwd);
+  lgndata.uname = document.getElementById('uname').value;
+  lgndata.pwd =  document.getElementById('psw').value ;
 
-   var xhttp = new XMLHttpRequest();
-   xhttp.onreadystatechange = function() {
-        if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-          document.getElementById('demo').innerHTML = xhttp.responseText;
-       }
-      };
+    const xhr = new XMLHttpRequest(),
+    method = "POST",
+    url = "http://127.0.0.1:5000/yn";
 
-      xhttp.open("POST", "http://127.0.0.1:5000/", true);
-      xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
-      xhttp.setRequestHeader("Content-type", "application/json, charset=utf-8");
-      xhttp.send(JSON.stringify(lgndata));
+      xhr.open(method, url, true);
+      xhr.onreadystatechange = function () {
+      if(xhr.readyState == 4 && xhr.status == 200) {
+        if (xhr.responseText == 'JAA'){
+         return ieiet();
+         }
+         return alert("Jūsu lietotājvārds/parole nederīgi!!!")
+      }
+    }
+xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+xhr.setRequestHeader("Content-type", "application/json, charset=utf-8");
+xhr.send(JSON.stringify(lgndata));
 }
-
 
 function registracija(){
   let parole1 = document.getElementById("psw_reg").value;
@@ -197,8 +200,13 @@ class Galvaspilsetas {
         " no " +
         jautajumu_skaits +
         ". <br> <img src='images/congratulation.jpg'>";
+      }
     }
+/*
+  gohome(){
+    location.href = "index.html"
   }
+*/
 
   Random_jautajumi() {
     let sk;
