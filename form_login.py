@@ -4,7 +4,7 @@ app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 import csv
-
+# parbaude loginam - vai eksiste user
 @app.route('/yn', methods=['GET', 'POST'])
 def login():
    print('izsaukums atnaca dati')
@@ -34,7 +34,8 @@ def login():
         print ("Neizdevas__")
         myresp = 'NEE'
    return (myresp)
-   
+
+#logina parbaude   
 @app.route('/lgnchk', methods=['GET', 'POST'])
 def lgnchk():
    print('izsaukums atnaca dati')
@@ -62,7 +63,7 @@ def lgnchk():
         print ("NESAKRIIT")
         myresp = 'NESAKRIIT'
    return (myresp)
-   
+# registracija   
 @app.route('/rgstr', methods=['GET', 'POST'])
 def rgstr():
    print('izsaukums atnaca dati')
@@ -98,7 +99,8 @@ def rgstr():
         print ("Neizdevas__")
         myresp = 'NEIZDEVAS'
    return (myresp)
-   
+
+#statistikas izveide   
 @app.route('/sttstk', methods=['GET', 'POST'])
 def sttstk():
    print('izsaukums atnaca dati')
@@ -135,6 +137,38 @@ def sttstk():
             break
 
    if sttstk == True:
+        print ("Izdevas__")
+        myresp = 'STATOK'
+   else:
+        print ("Neizdevas__")
+        myresp = 'NEIZDEVAS'
+   return (myresp)
+   
+# atlase 
+@app.route('/qry', methods=['GET', 'POST'])
+def qry():
+   print('izsaukums atnaca dati')
+   qry = False
+   j=json.loads(request.data)
+   print(j['uname'])
+
+   with open('statistika.csv', 'r', encoding='UTF-8') as csvfile:
+      csv_reader = csv.reader(csvfile, delimiter = ';')
+      qryx = j['uname']
+      print(qryx)
+      
+      for row in csv_reader:
+         if qryx in row[0]:
+            print(row)
+            qry = True
+# ierakstam izveletos datus datne
+            with open('qryx.csv', 'a', newline="", encoding='UTF-8') as csvfile:
+                csv_writer = csv.writer(csvfile, delimiter=';')
+                addqry = [row]
+                csv_writer.writerows(addqry)
+                csvfile.close()   
+            
+   if qry == True:
         print ("Izdevas__")
         myresp = 'STATOK'
    else:

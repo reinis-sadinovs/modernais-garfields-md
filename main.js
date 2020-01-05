@@ -48,11 +48,32 @@ function ieiet(){
   this.h2.setAttribute("id","h2");
   this.leftBox.appendChild(this.h2);
   h2.innerHTML = LietotajaVards;
-
-
+  
   jaunaSpele();
 
 }
+
+function reiting(){
+  let qry = new Object();
+  qry.uname = h2.innerHTML;
+      
+  const xhr = new XMLHttpRequest(),
+    method = "POST",
+    url = "http://127.0.0.1:5000/qry";
+
+      xhr.open(method, url, true);
+      xhr.onreadystatechange = function () {
+      if(xhr.readyState == 4 && xhr.status == 200) {
+        if (xhr.responseText == 'OK'){
+          alert("OK"+ h2.innerHTML);
+         }
+      }
+    }
+xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+xhr.setRequestHeader("Content-type", "application/json, charset=utf-8");
+xhr.send(JSON.stringify(qry));
+} 
+
 
 function ieiet2(){
   var LietotajaVards = document.getElementById("runame").value;
@@ -65,6 +86,7 @@ function ieiet2(){
   this.h2.setAttribute("id","h2");
   this.leftBox.appendChild(this.h2);
   h2.innerHTML = LietotajaVards;
+
 
 
   jaunaSpele();
@@ -341,7 +363,7 @@ const xhrs = new XMLHttpRequest(),
     if(xhrs.readyState == 4 && xhrs.status == 200) {
       if (xhrs.responseText == 'STATOK'){
         alert("Rezultāti veiksmīgi saglabāti!!!");
-        return alert("Ko darīsim tālāk?");
+        return reiting();
        }
        return alert("Viss ir slikti!!! \n Jānospiež F5")
      }
