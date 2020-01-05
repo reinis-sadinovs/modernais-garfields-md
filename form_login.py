@@ -98,3 +98,46 @@ def rgstr():
         print ("Neizdevas__")
         myresp = 'NEIZDEVAS'
    return (myresp)
+   
+@app.route('/sttstk', methods=['GET', 'POST'])
+def sttstk():
+   print('izsaukums atnaca dati')
+   sttstk = False
+   j=json.loads(request.data)
+   print(j['suname'])
+   print(j['jautno'])   
+   print(j['statok'])   
+   print(j['datumslaiks'])   
+   print(j['splslks'])   
+   print(j['rsltts'])   
+   addsuname = j['suname']
+   addjautno = j['jautno']
+   addstatok = j['statok']   
+   adddatumslaiks = j['datumslaiks']   
+   addsplslks = j['splslks']   
+   addrsltts = j['rsltts']
+   
+   with open('statistika.csv', 'a', newline="", encoding='UTF-8') as csvfile:
+     csv_writer = csv.writer(csvfile, delimiter=';')
+     addstt = [ addsuname, addjautno, addstatok, adddatumslaiks, addsplslks, addrsltts]
+     csv_writer.writerow(addstt)
+     csvfile.close()
+     
+     with open('statistika.csv', 'r', encoding='UTF-8') as csvfile:
+       csv_reader = csv.reader(csvfile, delimiter = ';')
+       for row in csv_reader:
+          print(row)
+#         print(row[0], row[1])
+#         print(username, password)
+          if row[0]==addsuname and row[3]==adddatumslaiks:
+            sttstk = True
+            print ("Izdevas")
+            break
+
+   if sttstk == True:
+        print ("Izdevas__")
+        myresp = 'STATOK'
+   else:
+        print ("Neizdevas__")
+        myresp = 'NEIZDEVAS'
+   return (myresp)

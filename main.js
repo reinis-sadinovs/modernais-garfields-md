@@ -5,6 +5,8 @@ let atbildes = [];
 let jaut_nr;
 let pareiza_atbilde;
 let pareizo_skaits;
+var laikss;
+var laiksb;
 let nr = []; //nodefinē viendimensiju masīvu
 for (let i = 0; i < 7; i++) {
   nr[i] = []; //nodefinē masīvam otru dimensiju; nr[i][0] - glabā jautājuma numuru un tur pat arī pareizo atbildi
@@ -16,9 +18,10 @@ function jaunaSpele() {
   g.inicializet();
 }
 
+
 function neregistrejoties(){
   //Pārbauda, vai tāds lietotājs eksistē un tad
-  let LietotajaVards = "Viesis";
+  //let LietotajaVards = "Viesis";
   this.leftBox = document.getElementById("left-sidebar");
   this.leftBox.innerHTML = "";
   this.divUzruna = document.createElement("div");
@@ -27,7 +30,7 @@ function neregistrejoties(){
   this.h2 = document.createElement("h2");
   this.h2.setAttribute("id","h2");
   this.leftBox.appendChild(this.h2);
-  this.h2.innerHTML = LietotajaVards;
+  //this.h2.innerHTML = LietotajaVards;
 
 
   jaunaSpele();
@@ -35,8 +38,7 @@ function neregistrejoties(){
 }
 
 function ieiet(){
-  //Pārbauda, vai tāds lietotājs eksistē un tad
-  let LietotajaVards = document.getElementById("uname").value;
+  var LietotajaVards = document.getElementById("uname").value;
   this.leftBox = document.getElementById("left-sidebar");
   this.leftBox.innerHTML = "";
   this.divUzruna = document.createElement("div");
@@ -45,7 +47,7 @@ function ieiet(){
   this.h2 = document.createElement("h2");
   this.h2.setAttribute("id","h2");
   this.leftBox.appendChild(this.h2);
-  this.h2.innerHTML = LietotajaVards;
+  h2.innerHTML = LietotajaVards;
 
 
   jaunaSpele();
@@ -53,8 +55,7 @@ function ieiet(){
 }
 
 function ieiet2(){
-  //Pārbauda, vai tāds lietotājs eksistē un tad
-  let LietotajaVards = document.getElementById("runame").value;
+  var LietotajaVards = document.getElementById("runame").value;
   this.leftBox = document.getElementById("left-sidebar");
   this.leftBox.innerHTML = "";
   this.divUzruna = document.createElement("div");
@@ -63,7 +64,7 @@ function ieiet2(){
   this.h2 = document.createElement("h2");
   this.h2.setAttribute("id","h2");
   this.leftBox.appendChild(this.h2);
-  this.h2.innerHTML = LietotajaVards;
+  h2.innerHTML = LietotajaVards;
 
 
   jaunaSpele();
@@ -157,6 +158,8 @@ class Galvaspilsetas {
   }
 
   inicializet() {
+    laikss = new Date().getTime();
+
     this.textblock = document.getElementById("textblock");
     if (this.textblock) {
       this.divProgres = document.createElement("div");
@@ -263,13 +266,10 @@ class Galvaspilsetas {
         " no " +
         jautajumu_skaits +
         ". <br> <img src='images/congratulation.jpg'>";
+         statistika()
       }
     }
-/*
-  gohome(){
-    location.href = "index.html"
-  }
-*/
+
 
   Random_jautajumi() {
     let sk;
@@ -303,4 +303,51 @@ class Galvaspilsetas {
       // console.log("Nākamais jautājums!!!!!!!!!!!!!!!!");
     }
   }
+}
+
+function statistika(){
+
+let statok = (jautajumu_skaits - pareizo_skaits);
+let jautno = jautajumu_skaits;
+let datumslaiks = new Date().toLocaleString('lv', {Hours: 'numeric', Minutes: 'long', Secundes: 'numeric'});
+var laiksb = new Date().getTime();
+let splslks = Math.round((laiksb - laikss)/1000);
+let rsltts = Math.round(10000/((splslks * statok)+1));
+
+let sttdata = new Object();
+    sttdata.suname = h2.innerText;
+    sttdata.jautno = jautno;
+    sttdata.statok = statok;
+    sttdata.datumslaiks = datumslaiks;
+    sttdata.splslks = splslks;
+    sttdata.rsltts = rsltts;
+/*
+console.log(h2.innerText);//+
+  console.log(statok); //+
+  console.log(jautno);  //+
+  console.log(datumslaiks); //+
+  console.log(laikss);
+  console.log(laiksb);
+  console.log(splslks);
+  console.log(rsltts);
+*/
+  
+const xhrs = new XMLHttpRequest(),
+  method = "POST",
+  url = "http://127.0.0.1:5000/sttstk";
+
+    xhrs.open(method, url, true);
+    xhrs.onreadystatechange = function () {
+    if(xhrs.readyState == 4 && xhrs.status == 200) {
+      if (xhrs.responseText == 'STATOK'){
+        alert("Rezultāti veiksmīgi saglabāti!!!");
+        return alert("Ko darīsim tālāk?");
+       }
+       return alert("Viss ir slikti!!! \n Jānospiež F5")
+     }
+    }
+xhrs.setRequestHeader("Access-Control-Allow-Origin", "*");
+xhrs.setRequestHeader("Content-type", "application/json, charset=utf-8");
+xhrs.send(JSON.stringify(sttdata));
+  
 }
