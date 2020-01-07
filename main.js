@@ -329,12 +329,12 @@ class Galvaspilsetas {
 
 function statistika(){
 
-let statok = (jautajumu_skaits - pareizo_skaits);
-let jautno = jautajumu_skaits;
-let datumslaiks = new Date().toLocaleString('lv', {Hours: 'numeric', Minutes: 'long', Secundes: 'numeric'});
-var laiksb = new Date().getTime();
-let splslks = Math.round((laiksb - laikss)/1000);
-let rsltts = Math.round(10000/((splslks * statok)+1));
+  let statok = pareizo_skaits;
+  let jautno = jautajumu_skaits;
+  let datumslaiks = new Date().toLocaleString('lv', {Hours: 'numeric', Minutes: 'long', Secundes: 'numeric'});
+  var laiksb = new Date().getTime();
+  let splslks = Math.round(laiksb - laikss);
+  let rsltts = Math.round(statok*50000/splslks);
 
 let sttdata = new Object();
     sttdata.suname = h2.innerText;
