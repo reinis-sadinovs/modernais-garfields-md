@@ -333,7 +333,7 @@ function statistika(){
   let jautno = jautajumu_skaits;
   let datumslaiks = new Date().toLocaleString('lv', {Hours: 'numeric', Minutes: 'long', Secundes: 'numeric'});
   var laiksb = new Date().getTime();
-  let splslks = Math.round(laiksb - laikss);
+  let splslks = Math.round((laiksb - laikss)/1000);
   let rsltts = Math.round(statok*50000/splslks);
 
 let sttdata = new Object();
