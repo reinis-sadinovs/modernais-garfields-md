@@ -18,10 +18,16 @@ function jaunaSpele() {
   g.inicializet();
 }
 
+function maniTop10(){
 
-function neregistrejoties(){
-  //Pārbauda, vai tāds lietotājs eksistē un tad
-  //let LietotajaVards = "Viesis";
+}
+
+function Top10(){
+
+}
+
+function ieiet_visiem(){
+  //var LietotajaVards = document.getElementById("uname").value;
   this.leftBox = document.getElementById("left-sidebar");
   this.leftBox.innerHTML = "";
   this.divUzruna = document.createElement("div");
@@ -30,33 +36,59 @@ function neregistrejoties(){
   this.h2 = document.createElement("h2");
   this.h2.setAttribute("id","h2");
   this.leftBox.appendChild(this.h2);
-  //this.h2.innerHTML = LietotajaVards;
+  //h2.innerHTML = LietotajaVards;
 
+  //this.leftBox = document.getElementById("left-sidebar");
+  //ieiet_visiem();
+  //h2.innerHTML=LietotajaVards;
+  this.jauna_spele = document.createElement("BUTTON");
+  this.jauna_spele.setAttribute("class", "poga");
+  this.jauna_spele.innerHTML = "Jauna spēle";
+  this.jauna_spele.onclick =  () => jaunaSpele();
+  this.leftBox.appendChild(this.jauna_spele);
 
+  this.mani_top10 = document.createElement("BUTTON");
+  this.mani_top10.setAttribute("class", "poga");
+  this.mani_top10.innerHTML = "Mani TOP 10";
+  this.mani_top10.onclick = () => maniTop10();
+  this.leftBox.appendChild(this.mani_top10);
+
+  this.top10 = document.createElement("BUTTON");
+  this.top10.setAttribute("class", "poga");
+  this.top10.innerHTML = "TOP 10";
+  this.top10.onclick = () => Top10();
+  this.leftBox.appendChild(this.top10);
+
+  this.beigt = document.createElement("BUTTON");
+  this.beigt.setAttribute("class", "poga");
+  this.beigt.innerHTML = "Beigt";
+  this.beigt.onclick = () => location.reload();
+  this.leftBox.appendChild(this.beigt);
+  
   jaunaSpele();
+}
 
+function neregistrejoties(){
+  var LietotajaVards = "Viesis";
+  ieiet_visiem();
+  h2.innerHTML = LietotajaVards;
 }
 
 function ieiet(){
   var LietotajaVards = document.getElementById("uname").value;
-  this.leftBox = document.getElementById("left-sidebar");
-  this.leftBox.innerHTML = "";
-  this.divUzruna = document.createElement("div");
-  this.divUzruna.setAttribute("id","uzruna");
-  this.leftBox.appendChild(this.divUzruna);
-  this.h2 = document.createElement("h2");
-  this.h2.setAttribute("id","h2");
-  this.leftBox.appendChild(this.h2);
+  ieiet_visiem();
   h2.innerHTML = LietotajaVards;
-  
-  jaunaSpele();
+}
 
+function ieiet2(){
+  var LietotajaVards = document.getElementById("runame").value;
+  ieiet_visiem();
+  h2.innerHTML = LietotajaVards;
 }
 
 function reiting(){
   let qry = new Object();
-  qry.uname = h2.innerHTML;
-      
+  qry.uname = h2.innerHTML;      
   const xhr = new XMLHttpRequest(),
     method = "POST",
     url = "http://127.0.0.1:5000/qry";
@@ -73,25 +105,6 @@ xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 xhr.setRequestHeader("Content-type", "application/json, charset=utf-8");
 xhr.send(JSON.stringify(qry));
 } 
-
-
-function ieiet2(){
-  var LietotajaVards = document.getElementById("runame").value;
-  this.leftBox = document.getElementById("left-sidebar");
-  this.leftBox.innerHTML = "";
-  this.divUzruna = document.createElement("div");
-  this.divUzruna.setAttribute("id","uzruna");
-  this.leftBox.appendChild(this.divUzruna);
-  this.h2 = document.createElement("h2");
-  this.h2.setAttribute("id","h2");
-  this.leftBox.appendChild(this.h2);
-  h2.innerHTML = LietotajaVards;
-
-
-
-  jaunaSpele();
-
-}
 
 function login(){
   let lgndata = new Object();
@@ -115,8 +128,6 @@ xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 xhr.setRequestHeader("Content-type", "application/json, charset=utf-8");
 xhr.send(JSON.stringify(lgndata));
 }
-
-
 
 function lgnpsscheck(){
   let parole1 = document.getElementById("rpsw").value;
@@ -183,6 +194,7 @@ class Galvaspilsetas {
     laikss = new Date().getTime();
 
     this.textblock = document.getElementById("textblock");
+    this.textblock.innerHTML = "";
     if (this.textblock) {
       this.divProgres = document.createElement("div");
       this.divProgres.setAttribute("id", "progres");
@@ -288,7 +300,7 @@ class Galvaspilsetas {
         " no " +
         jautajumu_skaits +
         ". <br> <img src='images/congratulation.jpg'>";
-         statistika()
+      statistika()
       }
     }
 
