@@ -262,7 +262,7 @@ input[type=text], input[type=password] {
 
 .browser{
     width:180px;
-    height:70px;
+    height:320px;
     background:#068fb6;
     margin:0 auto;
     margin-top:20px;
@@ -300,4 +300,9 @@ margin-right: 0px;
 	font-weight: bolder;
 	font-size: 18px;
 	font-style: italic;
+}
+
+#text-input {
+    height:200px;
+    size: 500;
 }
