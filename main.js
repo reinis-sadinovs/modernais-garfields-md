@@ -385,3 +385,4 @@ xhrs.setRequestHeader("Content-type", "application/json, charset=utf-8");
 xhrs.send(JSON.stringify(sttdata));
   
 }
+
